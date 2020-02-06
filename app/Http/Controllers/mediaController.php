@@ -4,46 +4,39 @@ namespace App\Http\Controllers;
 
 // use Response;
 use Illuminate\Http\Request;
-use Response, Input;
+use Response, Input, AWS;
 
 
 class mediaController extends Controller
 {
     private function upload($file, $folder = null, $filename = null){
-        // get original filename
-        if($filename){
-            $imageName = $filename.'.'.request()->image->getClientOriginalExtension();
-        }else{
-            $imageName = time().'.'.request()->image->getClientOriginalExtension();
-        }
+        // S3: Do Space uploader
+        $s3 = AWS::createClient('s3');
+        $s3->putObject(array(
+            'Bucket'     => env('AWS_BUCKET'),
+            'Key'        => env('AWS_ACCESS_KEY_ID'),
+            'SourceFile' => Input::file('cover_image'),
+        ));
 
-        // group by folder if needed
-        if($folder){
-            // check if directory exist
-            if (!file_exists($folder)) {
-                mkdir($folder, 0777, true);
-            }
-        }
+        $rslt = $s3->getObject(array(
+            'Bucket'     => env('AWS_BUCKET'),
+            'Key'        => env('AWS_ACCESS_KEY_ID'),
+            'SourceFile' => Input::file('cover_image'),
+        ));
 
-        // define image path
-        $imagePath = public_path('img') . ($folder ? ( "/" . $folder . "/" ) : "");
-
-        // save image
-        request()->image->move($imagePath, $imageName);
-
-        // return filename
-        return asset("img/". ($folder ? ( $folder . "/" ) : ""). $imageName);
+        // return url
+        return $rslt['@metadata']['effectiveUri'];
     }
 
     //
-    public function uploadImagePortofolio(Request $request){
+    public function uploadImagePromotion(Request $request){
         // $request->validate([
         //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         // ]);
-        $result = $this->upload($request, "Portofolio");
+        $result = $this->upload($request, "Promotion");
 
         return Response::json([
-            'url' => asset($result)
+            'url' => $result
         ], 200);
     }
 
@@ -54,7 +47,7 @@ class mediaController extends Controller
         $result = $this->upload($request, 'Temp', "logo");
 
         return Response::json([
-            'url' => asset($result)
+            'url' => $result
         ], 200);
     }
 }

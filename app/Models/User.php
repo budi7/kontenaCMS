@@ -5,11 +5,9 @@ use Eloquent;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use SoftDeletes;
     use Notifiable;
 
 	protected $guarded 				= array();
@@ -32,7 +30,7 @@ class User extends Authenticatable
     // Error handling
     function getErrors(){
 		return $this->errors;
-    }	
+    }
     function setError($msg){
 		$this->errors = $msg;
 		return true;

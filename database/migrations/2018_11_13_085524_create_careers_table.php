@@ -13,15 +13,13 @@ class CreateCareersTable extends Migration
      */
     public function up()
     {
-        Schema::create('careers', function (Blueprint $table) {
+        Schema::create('CMS_articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('type');
-            $table->string('location');
+            $table->bigInteger('user_id');
+            $table->dateTime('published_at');
+            $table->string('cover_image');
             $table->text('description');
-            $table->text('responsibilities');
-            $table->text('requirements');
-            $table->boolean('isAvailable');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,6 +32,6 @@ class CreateCareersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('careers');
+        Schema::dropIfExists('CMS_articles');
     }
 }

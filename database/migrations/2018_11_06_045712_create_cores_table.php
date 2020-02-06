@@ -13,7 +13,7 @@ class CreateCoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('cores', function (Blueprint $table) {
+        Schema::create('CMS_cores', function (Blueprint $table) {
             $table->increments('id');
             $table->text('key');
             $table->json('value');
@@ -29,6 +29,6 @@ class CreateCoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cores');
+        Schema::dropIfExists('CMS_cores');
     }
 }

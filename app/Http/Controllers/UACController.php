@@ -22,11 +22,11 @@ class UACController extends Controller {
 	public function logging (Request $request)
 	{
 
-		if (Auth::attempt(['username' => $request->get('email'), 'password' => $request->get('password')]))  {			
+		if (Auth::attempt(['username' => $request->get('username'), 'password' => $request->get('password')]))  {
 			return redirect()->intended('dashboard');
 		} else {
-			$this->page_attributes->msg['error']    = ["Invalid Password / Email"];
-				
+			$this->page_attributes->msg['error']    = ["Invalid Password / Username"];
+
 			return $this->generateRedirect(route('backend.login'));
 		}
 	}

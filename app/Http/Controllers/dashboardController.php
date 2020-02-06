@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Guestbook;
 
 use Analytics, Period, Auth;
 use Carbon\Carbon;
@@ -18,18 +17,13 @@ class dashboardController extends Controller
 		$this->page_attributes->sub_title   = '';
         $this->page_attributes->filter      =  null;
 
-        // Get guestbook data
-        // $this->page_datas->analytics        = $this->getAnalytics();  
-        $this->page_datas->analytics        = [];  
-    
-        // Get guestbook data
-        $this->page_datas->guestbooks       = Guestbook::where('isContacted', null)
-                                                ->orderBy('created_at', 'desc')
-                                                ->paginate();
+        // $this->page_datas->analytics        = $this->getAnalytics();
+        $this->page_datas->analytics        = [];
+
 
         // views
         $this->view                         = view('pages.backend.dashboard');
-        return $this->generateView(); 
+        return $this->generateView();
     }
 
     public function profile()
@@ -39,12 +33,12 @@ class dashboardController extends Controller
 		$this->page_attributes->sub_title   = '';
         $this->page_attributes->filter      =  null;
 
-        $this->page_datas->datas            = Auth::user(); 
+        $this->page_datas->datas            = Auth::user();
 
          // views
         $this->view                         = view('pages.backend.me');
-        return $this->generateView(); 
-    }    
+        return $this->generateView();
+    }
 
     private function getAnalytics(){
         // Get analytics data
@@ -53,11 +47,11 @@ class dashboardController extends Controller
         if(!$analytics){
             return [];
         }
-        
+
         // format data
         $formatted_data = [];
         foreach ($analytics as $key => $analytic) {
-            // format date as string 
+            // format date as string
             $tmp_date = Carbon::createFromFormat('Y-m-d H:i:s', $analytic['date'], 'GMT+7');
 
             $tmp = [
@@ -71,5 +65,5 @@ class dashboardController extends Controller
         return $formatted_data;
     }
 
-    
+
 }

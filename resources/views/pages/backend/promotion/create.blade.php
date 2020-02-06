@@ -1,0 +1,106 @@
+@extends('template.backend')
+
+@section('menu_promotion')
+	active
+@stop
+
+@push('content')
+<div class="row">
+    <div class="col-12">
+
+		@include('components.backend.alertbox')
+
+        <div class="card card-chart">
+			<div class="card-header pb-4">
+				<div class="row">
+					<div class="col-sm-6 text-left">
+					<h2 class="card-title pt-3 mb-0"> {{ $page_attributes->title }} <small class="card-title">/ {{ $page_attributes->sub_title }}</small></h2>
+					</div>
+					<div class="col-sm-6 text-right">
+						{{-- <a href="{{ route('backend.user.edit', ['id' => 1]) }}" class="btn btn-info btn-round ml-auto">
+							<i class="fa fa-pencil"></i> <span class="d-none d-sm-inline">Edit User</span>
+						</a> --}}
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="col-12">
+
+					{!! Form::open([
+						'url' => $page_datas->id ? route('backend.promotion.update', ['id' => $page_datas->id]) : route('backend.promotion.store')
+					])!!}
+						{{ Form::token() }}
+						{{ $page_datas->datas ? method_field('PUT') : ''}}
+						<div class="row">
+							<div class="col-12">
+								<h4>Promotion Detail</h4>
+							</div>
+						</div>
+
+						<div class="row">
+                            <div class="col-md-7">
+								<div class="row">
+									<div class="col-12">
+										<div class="form-group">
+											<label>Promotion Title</label>
+											{{  Form::text('title', $page_datas->id ? $page_datas->datas->title : null, ['class' => 'form-control']) }}
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label>Start At</label>
+											{{  Form::dateTime('start_at', $page_datas->id ? $page_datas->datas->start_at : null, ['class' => 'form-control']) }}
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label>End At</label>
+											{{  Form::dateTime('end_at', $page_datas->id ? $page_datas->datas->end_at : null, ['class' => 'form-control']) }}
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-group">
+											<label>Promotion Description</label>
+											{{  Form::textarea('description', $page_datas->id ? $page_datas->datas->description : null, ['class' => 'form-control']) }}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-5">
+								<div class="form-group">
+									<label>Promotion Image</label>
+									<br />
+									<img id="preview_cover" src="{{ asset('img/noimage.png') }}" class="normal pt-4 pb-4 pr-4 pl-0" alt="logo">
+									<br />
+									{{  Form::file('image', [
+										'class' => 'form-control image-send',
+										"imagePreload" => ( $page_datas->id ? $page_datas->datas->cover_image : null )
+									]) }}
+									<a href="#" class="btn btn-sm btn-outline-primary">Change</a>
+									{{-- <p><small>* recommended image resolution</small></p> --}}
+								</div>
+							</div>
+
+						</div>
+
+						<div class="row mt-4">
+							<div class="col-md-12">
+								<div class="form-group">
+									<a href="{{ $page_datas->id ? route('backend.promotion.show', ['id' => $page_datas->id]) : route('backend.promotion.index') }}" class="btn btn-outline-primary">Cancel</a>
+									<button type="submit" class="btn btn-primary">Save</button>
+								</div>
+							</div>
+						</div>
+					{!! Form::close() !!}
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+@endpush
+
+
+@push('scripts')
+	imageSend.setCsrfToken('{{ csrf_token() }}');
+	imageSend.setUrl('{{ route('backend.media.upload.promotion') }}');
+@endpush

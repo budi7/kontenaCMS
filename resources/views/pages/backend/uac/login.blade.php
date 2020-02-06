@@ -20,7 +20,7 @@
                                 <p class="description">
                                     Login
                                 </p>
-                            </div>                          
+                            </div>
                             </br>
                             </br>
                             <p></p>
@@ -30,14 +30,14 @@
                                     <div class="col-12 p-b-2">
                                         @include('components.backend.alertbox')
                                     </div>
-                                </div>                                  
-                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="control-label text-secondary"><strong>Email</strong></label>
-                                    <input id="email" type="email" class="form-control font-weight-bold"  name="email" value="{{ old('email') }}" required autofocus placeholder="user@example.com">
+                                </div>
+                                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                                    <label for="username" class="control-label text-secondary"><strong>Username</strong></label>
+                                    <input id="username" type="phone" class="form-control font-weight-bold"  name="username" value="{{ old('username') }}" required autofocus placeholder="62xxxxxxxx">
 
-                                    @if ($errors->has('email'))
+                                    @if ($errors->has('username'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
+                                            <strong>{{ $errors->first('username') }}</strong>
                                         </span>
                                     @endif
                                 </div>

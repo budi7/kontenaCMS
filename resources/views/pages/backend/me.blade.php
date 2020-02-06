@@ -27,19 +27,19 @@
                             <p>{{ $page_datas->datas->username }}</p>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-3">
                             <p>Access Role :</p>
                         </div>
                         <div class="col-9">
                             <p>{{ $page_datas->datas->role }}</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 			<div class="card-footer">
                 <div class="col-12">
-                </div>				
+                </div>
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@
                         'url' => route('backend.updatePassword')
                     ])!!}
                         {{ Form::token() }}
-                        <div class="form-body">   
+                        <div class="form-body">
                             <div class="row">
                                 <div class="col-md-10 ">
                                     <div class="form-group">
@@ -74,8 +74,8 @@
                                         {{  Form::password('new-password', ['class' => 'form-control mb-2']) }}
                                     </div>
                                 </div>
-                            </div>                            
-                            
+                            </div>
+
                             <div class="row mt-4">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -89,7 +89,7 @@
             </div>
             <div class="card-footer">
                 <div class="col-12">
-                </div>				
+                </div>
             </div>
         </div>
     </div>

@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -162,6 +162,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
+        Aws\Laravel\AwsServiceProvider::class,
     ],
 
     /*
@@ -215,5 +216,6 @@ return [
         'Input' => Illuminate\Support\Facades\Input::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'Period' => Spatie\Analytics\Period::class,
+        'AWS' => Aws\Laravel\AwsFacade::class,
     ],
 ];

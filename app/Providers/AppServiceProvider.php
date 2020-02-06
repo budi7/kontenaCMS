@@ -28,10 +28,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         //observers
-        \App\Models\User::observe(new \App\Observers\userObserver);
-        \App\Models\Portofolio::observe(new \App\Observers\portofolioObserver);
-        \App\Models\Career::observe(new \App\Observers\careerObserver);
-        \App\Models\Guestbook::observe(new \App\Observers\guestBookObserver);
+        // \App\Models\User::observe(new \App\Observers\userObserver);
+        // \App\Models\Portofolio::observe(new \App\Observers\portofolioObserver);
+        // \App\Models\Career::observe(new \App\Observers\careerObserver);
+        // \App\Models\Guestbook::observe(new \App\Observers\guestBookObserver);
     }
 
     /**
@@ -42,9 +42,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //observers
-        \App\Models\User::observe(new \App\Observers\userObserver);
-        \App\Models\Portofolio::observe(new \App\Observers\portofolioObserver);
-        \App\Models\Career::observe(new \App\Observers\careerObserver);
-        \App\Models\Guestbook::observe(new \App\Observers\guestBookObserver);
+        // \App\Models\User::observe(new \App\Observers\userObserver);
+        // \App\Models\Portofolio::observe(new \App\Observers\portofolioObserver);
+        // \App\Models\Career::observe(new \App\Observers\careerObserver);
+        // \App\Models\Guestbook::observe(new \App\Observers\guestBookObserver);
     }
 }
