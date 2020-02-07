@@ -72,7 +72,7 @@
 									<br />
 									<img id="preview_cover" src="{{ asset('img/noimage.png') }}" class="normal pt-4 pb-4 pr-4 pl-0" alt="logo">
 									<br />
-									{{  Form::file('image', [
+									{{  Form::file('cover_image', [
 										'class' => 'form-control image-send',
 										"imagePreload" => ( $page_datas->id ? $page_datas->datas->cover_image : null )
 									]) }}
@@ -107,11 +107,9 @@
     $('#picker_end').datetimepicker({
         inline: true,
         sideBySide: true
-    }).data("DateTimePicker");
+    }).data("DateTimePicker").format('DD-MM-YYYY HH:mm').clear().hide();
     $('#picker_start').datetimepicker({
         inline: true,
         sideBySide: true
-    }).data("DateTimePicker");
-
-	<!-- .clear().hide(); -->
+    }).data("DateTimePicker").format('DD-MM-YYYY HH:mm').clear().hide();
 @endpush

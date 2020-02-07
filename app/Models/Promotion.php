@@ -23,7 +23,7 @@ class Promotion extends Model
     protected $hidden = [
     ];
     protected $errors 				= [];
-
+    protected $dates                = ['start_at', 'end_at'];
 
     // Error handling
     function getErrors(){

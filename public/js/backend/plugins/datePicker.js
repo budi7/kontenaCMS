@@ -2460,15 +2460,15 @@
         disabledDates: false,
         enabledDates: false,
         icons: {
-            time: 'tim-icons icon-time-alarm',
-            date: 'tim-icons icon-calendar-60',
-            up: 'tim-icons icon-minimal-up',
-            down: 'tim-icons icon-minimal-down',
-            previous: 'tim-icons icon-minimal-left',
-            next: 'tim-icons icon-minimal-right',
-            today: 'tim-icons icon-camera-18',
-            clear: 'tim-icons icon-simple-trash',
-            close: 'tim-icons icon-simple-remove'
+            time: 'glyphicon glyphicon-time',
+            date: 'glyphicon glyphicon-calendar',
+            up: 'glyphicon glyphicon-chevron-up',
+            down: 'glyphicon glyphicon-chevron-down',
+            previous: 'glyphicon glyphicon-chevron-left',
+            next: 'glyphicon glyphicon-chevron-right',
+            today: 'glyphicon glyphicon-screenshot',
+            clear: 'glyphicon glyphicon-trash',
+            close: 'glyphicon glyphicon-remove'
         },
         tooltips: {
             today: 'Go to today',

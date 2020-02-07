@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Promotion;
-use Input;
+use Input, Carbon\Carbon;
 
 class promotionController extends Controller
 {
@@ -63,9 +63,12 @@ class promotionController extends Controller
         $promotion = Promotion::findOrNew($id);
 
         // fill input
+        $s_at = Carbon::createFromFormat('d-m-Y H:i', Input::get('start_at'));
+        $e_at = Carbon::createFromFormat('d-m-Y H:i', Input::get('end_at'));
+
         $promotion['title'] = Input::get('title');
-        $promotion['start_at'] = Input::get('start_at');
-        $promotion['end_at'] = Input::get('end_at');
+        $promotion['start_at'] = $s_at;
+        $promotion['end_at'] = $e_at;
         $promotion['cover_image'] = Input::get('cover_image');
         $promotion['description'] = Input::get('description');
 
