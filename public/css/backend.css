@@ -87,10 +87,11 @@
     font-weight: bold;
     font-size: 1.2em;
     margin: 0;
-    color:#fff;
+    color:#fff !important;
   }
   .bootstrap-datetimepicker-widget button[data-action] {
     padding: 6px;
+    color:#fff;
   }
   .bootstrap-datetimepicker-widget .btn[data-action="incrementHours"]::after {
     position: absolute;
@@ -287,16 +288,23 @@
     width: 20px;
     color: #fff;
   }
+  .bootstrap-datetimepicker-widget table td.day,
+  .bootstrap-datetimepicker-widget table td.hour,
+  .bootstrap-datetimepicker-widget table td.minute,
+  .bootstrap-datetimepicker-widget table td.second {
+    color:#fff;
+  }
   .bootstrap-datetimepicker-widget table td.day:hover,
   .bootstrap-datetimepicker-widget table td.hour:hover,
   .bootstrap-datetimepicker-widget table td.minute:hover,
   .bootstrap-datetimepicker-widget table td.second:hover {
     background: #344675;
+    color:#fff;
     cursor: pointer;
   }
   .bootstrap-datetimepicker-widget table td.old,
   .bootstrap-datetimepicker-widget table td.new {
-    color: #777777;
+    color: #ffffff;
   }
   .bootstrap-datetimepicker-widget table td.today {
     position: relative;
