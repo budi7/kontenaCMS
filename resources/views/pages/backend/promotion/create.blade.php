@@ -46,16 +46,16 @@
 											{{  Form::text('title', $page_datas->id ? $page_datas->datas->title : null, ['class' => 'form-control']) }}
 										</div>
 									</div>
-									<div class="col-6">
+									<div class="col-12">
 										<div class="form-group">
 											<label>Start At</label>
-											{{  Form::dateTime('start_at', $page_datas->id ? $page_datas->datas->start_at : null, ['class' => 'form-control']) }}
+											{{  Form::dateTime('start_at', $page_datas->id ? $page_datas->datas->start_at : null, ['class' => 'form-control', 'id' => 'picker_start']) }}
 										</div>
 									</div>
-									<div class="col-6">
+									<div class="col-12">
 										<div class="form-group">
 											<label>End At</label>
-											{{  Form::dateTime('end_at', $page_datas->id ? $page_datas->datas->end_at : null, ['class' => 'form-control']) }}
+											{{  Form::dateTime('end_at', $page_datas->id ? $page_datas->datas->end_at : null, ['class' => 'form-control', 'id' => 'picker_end']) }}
 										</div>
 									</div>
 									<div class="col-12">
@@ -103,4 +103,15 @@
 @push('scripts')
 	imageSend.setCsrfToken('{{ csrf_token() }}');
 	imageSend.setUrl('{{ route('backend.media.upload.promotion') }}');
+
+    $('#picker_end').datetimepicker({
+        inline: true,
+        sideBySide: true
+    }).data("DateTimePicker");
+    $('#picker_start').datetimepicker({
+        inline: true,
+        sideBySide: true
+    }).data("DateTimePicker");
+
+	<!-- .clear().hide(); -->
 @endpush
