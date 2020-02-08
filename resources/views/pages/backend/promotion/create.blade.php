@@ -49,13 +49,13 @@
 									<div class="col-12">
 										<div class="form-group">
 											<label>Start At</label>
-											{{  Form::dateTime('start_at', $page_datas->id ? $page_datas->datas->start_at : null, ['class' => 'form-control', 'id' => 'picker_start']) }}
+											{{  Form::text('start_at', $page_datas->id ? $page_datas->datas->start_at : null, ['class' => 'form-control', 'id' => 'picker_start']) }}
 										</div>
 									</div>
 									<div class="col-12">
 										<div class="form-group">
 											<label>End At</label>
-											{{  Form::dateTime('end_at', $page_datas->id ? $page_datas->datas->end_at : null, ['class' => 'form-control', 'id' => 'picker_end']) }}
+											{{  Form::text('end_at', $page_datas->id ? $page_datas->datas->end_at : null, ['class' => 'form-control', 'id' => 'picker_end']) }}
 										</div>
 									</div>
 									<div class="col-12">
@@ -68,7 +68,7 @@
 							</div>
 							<div class="col-md-5">
 								<div class="form-group">
-									<label>Promotion Image</label>
+									<label>Cover Image</label>
 									<br />
 									<img id="preview_cover" src="{{ asset('img/noimage.png') }}" class="normal pt-4 pb-4 pr-4 pl-0" alt="logo">
 									<br />

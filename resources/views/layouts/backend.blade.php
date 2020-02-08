@@ -31,6 +31,9 @@
         <script src={{ asset('js/backend/plugins/moment.min.js') }}></script>
         <script src={{ asset('js/backend/plugins/datePicker.js') }}></script>
 
+        {{-- quil --}}
+        <script src={{ asset('js/backend/plugins/quil.js') }}></script>
+
         {{-- ajax image upload --}}
         <script src={{ asset('js/backend/plugins/imageSend.js') }}></script>
 

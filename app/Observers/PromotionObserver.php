@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Observers;
-use App\Models\Career;
+use App\Models\Promotion;
 use Validator;
 
-class careerObserver extends Career
-{   
+
+class promotionObserver extends Promotion
+{
     public static function saving($model){
+        $ori = $model->getOriginal();
+
         // validate
 		$v = Validator::make($model->attributes, $model->rules);
 

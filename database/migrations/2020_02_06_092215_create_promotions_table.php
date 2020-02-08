@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrateSlidersTable extends Migration
+class CreatePromotionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class CrateSlidersTable extends Migration
     {
         Schema::create('CMS_promotions', function (Blueprint $table) {
             $table->increments('id');
+            $table->bigInteger('user_id');
             $table->string('title');
             $table->string('cover_image');
             $table->dateTime('start_at');

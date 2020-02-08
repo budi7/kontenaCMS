@@ -27,6 +27,7 @@ mix.styles([
         'resources/css/backend/bootstrap.min.css',
         'resources/css/backend/nucleo-icons.css',
         'resources/css/backend/black-dashboard.css',
+        'resources/css/backend/quil.css',
     ], 'public/css/backend.css')
     .copy('resources/js' , 'public/js')
     .copy('resources/img' , 'public/img')

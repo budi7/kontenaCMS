@@ -49,5 +49,5 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/config', 'configController@store')->name('backend.config.store');
 
     Route::post('/media/uploader/promotion', 'mediaController@uploadImagePromotion')->name('backend.media.upload.promotion');
-    Route::post('/media/uploader/webcore', 'mediaController@uploadImageWebcore')->name('backend.media.upload.webcore');
+    Route::post('/media/uploader/article', 'mediaController@uploadImageArticle')->name('backend.media.upload.article');
 });

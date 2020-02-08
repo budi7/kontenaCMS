@@ -15,71 +15,56 @@
                 <div class="row">
 					<div class="col-sm-6 text-left pt-3">
 						<h2 class="card-title mb-0"> {{ $page_attributes->title }} <small class="card-title">/ {{ $page_attributes->sub_title }}</small></h2>
-					</div>					
+					</div>
                     <div class="col-sm-6 text-right pt-2">
 						<a href="{{ route('backend.blog.edit', ['id' => $page_datas->id ]) }}" class="btn btn-sm btn-primary btn-simple"><i class="fa fa-edit"></i>&nbsp; Edit</a>
 						<a href="javascript:void(0);" class="btn btn-sm btn-danger btn-simple" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i>&nbsp; Delete</a>
-					</div>				
-				</div>				
+					</div>
+				</div>
 			</div>
 			<div class="card-body">
 				<div class="col-12 pb-4">
 					<div class="row">
-						<div class="col-3">
-							<p>Job Title :</p>
+                        <div class="col-md-4">
+							<img src="{{ asset($page_datas->datas->cover_image) }}" class="normal pb-4 pr-4 pl-0" alt="profile">
+							<br />
 						</div>
-						<div class="col-9">
-							<p class="text-capitalize">{{ $page_datas->datas->title }}</p>
-						</div>
+						<div class="col-md-8">
+                            <div class="row">
+                                <div class="col-3">
+                                    <p>Title :</p>
+                                </div>
+                                <div class="col-9">
+                                    <p class="text-capitalize">{{ $page_datas->datas->title }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <p>Published At :</p>
+                                </div>
+                                <div class="col-9">
+                                    <p>
+                                        @php
+                                        $published_at = date_create($page_datas->datas->published_a);
+                                        echo date_format($published_at,"d M Y")
+                                        @endphp
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 pt-3">
+                                    <p>Article :</p>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-12 pt-3">
+                                    {!! $page_datas->datas->content !!}
+                                    <!-- <div id="editor"></div> -->
+                                </div>
+                            </div>
+                        </div>
 					</div>
-					<div class="row">
-						<div class="col-3">
-							<p>Job Type :</p>
-						</div>
-						<div class="col-9">
-							<p>{{ $page_datas->datas->type }}</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-3">
-							<p>Location :</p>
-						</div>
-						<div class="col-9">
-							<p>{{ $page_datas->datas->location }}</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-3">
-							<p>Availability :</p>
-						</div>
-						<div class="col-9">
-							<p>{{ ($page_datas->datas->isAvailable ? 'Available' : "Not Available") }}</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-3">
-							<p>Job Description :</p>
-						</div>
-						<div class="col-9">
-							<p>{{ $page_datas->datas->description }}</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-3">
-							<p>Job Responsibilities :</p>
-						</div>
-						<div class="col-9">
-							<p>{{ $page_datas->datas->responsibilities }}</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-3">
-							<p>Job Requirements :</p>
-						</div>
-						<div class="col-9">
-							<p>{{ $page_datas->datas->requirements }}</p>
-						</div>
-					</div>																				
+
 					<div class="row">
 						<div class="col-12 mt-4 text-left">
 							<a href="{{ route('backend.blog.index') }}" class="btn btn-outline-primary">Back</a>
@@ -96,5 +81,7 @@
 	@include('components.backend.deleteModal', [
 		'title' => 'data',
 		'route' => route('backend.blog.destroy', ['id' => $page_datas->id])
-	])	
+	])
 @endpush
+
+

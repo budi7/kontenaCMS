@@ -25,24 +25,24 @@
 			<div class="card-body">
 				<div class="col-12 pb-4">
 					<div class="row">
-						<div class="col-12">
-							<h4>The Project</h4>
+						<div class="col-12 text-capitalize">
+							<h4>{{ $page_datas->datas->title }}</h4>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-12 mb-3">
 							<p>Project Cover :</p>
-							<img src="{{ asset($page_datas->datas->cover) }}" class="normal pb-4 pr-4 pl-0" alt="logo">
+							<img src="{{ asset($page_datas->datas->cover_image) }}" class="normal pb-4 pr-4 pl-0" alt="logo">
 							<br />
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-12">
 							<div class="row">
 								<div class="col-12"><br></div>
 							</div>
 							<div class="row">
 								<div class="col-5 col-md-3">
-									<p>Project Title :</p>
+									<p>Promotion Title :</p>
 								</div>
 								<div class="col-7 col-md-9">
 									<p class="text-capitalize">{{ $page_datas->datas->title }}</p>
@@ -50,15 +50,27 @@
 							</div>
 							<div class="row">
 								<div class="col-5 col-md-3">
-									<p>Project Year :</p>
+									<p>Start At :</p>
 								</div>
 								<div class="col-7 col-md-9">
-									<p>{{ $page_datas->datas->year }}</p>
+									<p>
+                                        {{ Carbon\Carbon::parse($page_datas->datas['start_at'])->format('d-m-Y H:i') }}
+                                    </p>
+								</div>
+                            </div>
+							<div class="row">
+								<div class="col-5 col-md-3">
+									<p>End At :</p>
+								</div>
+								<div class="col-7 col-md-9">
+									<p>
+                                        {{ Carbon\Carbon::parse($page_datas->datas['end_at'])->format('d-m-Y H:i') }}
+                                    </p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-5 col-md-3">
-									<p>Project Description :</p>
+									<p>Description :</p>
 								</div>
 								<div class="col-7 col-md-9">
 									<p>{{ $page_datas->datas->description }}</p>
@@ -69,42 +81,6 @@
 
 					<div class="row">
 						<div class="col-12"></br></div>
-					</div>
-
-					<div class="row">
-						<div class="col-12">
-							<h4>The Client</h4>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-4">
-							<p>Client Logo :</p>
-							<img src="{{ asset($page_datas->datas->client['logo']) }}" class="normal pb-4 pr-4 pl-0" alt="logo">
-							<br />
-						</div>
-						<div class="col-md-8">
-							<div class="row">
-									<div class="col-12"><br></div>
-								</div>
-								<div class="row">
-									<div class="col-5 col-md-3">
-										<p>Client Name :</p>
-									</div>
-									<div class="col-7 col-md-9">
-										<p class="text-capitalize">{{ $page_datas->datas->client['name'] }}</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-5 col-md-3">
-										<p>Client Description :</p>
-									</div>
-									<div class="col-7 col-md-9">
-										<p class="text-capitalize">{{ $page_datas->datas->client['description'] }}</p>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 
 					<div class="row">

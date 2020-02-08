@@ -43,7 +43,7 @@
             </div>
         </div>
     </div>
-    <div class="col-6">
+    <!-- <div class="col-6">
         <div class="card card-chart">
             <div class="card-header pb-4">
                 <div class="col-sm-6 text-left">
@@ -92,6 +92,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 @endpush

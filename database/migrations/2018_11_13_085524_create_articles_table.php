@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCareersTable extends Migration
+class CreateArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,7 @@ class CreateCareersTable extends Migration
             $table->bigInteger('user_id');
             $table->dateTime('published_at');
             $table->string('cover_image');
-            $table->text('description');
+            $table->text('content');
             $table->timestamps();
             $table->softDeletes();
         });

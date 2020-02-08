@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Observers;
-use App\Models\Guestbook;
+use App\Models\Article;
 use Validator;
 
-class guestBookObserver extends Guestbook
-{   
+
+class articleObserver extends Article
+{
     public static function saving($model){
+        $ori = $model->getOriginal();
+
         // validate
 		$v = Validator::make($model->attributes, $model->rules);
 
@@ -19,14 +22,5 @@ class guestBookObserver extends Guestbook
 		}
 
 		return true;
-    }
-
-    public static function updating($model){
-        $ori = $model->getOriginal();
-        
-        if($ori['isContacted'] == true){
-            $model->setError(["Guest allready contacted"]);
-            return false;
-        }
     }
 }

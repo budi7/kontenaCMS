@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Promotion;
-use Input, Carbon\Carbon;
+use Input, Auth, Carbon\Carbon;
 
 class promotionController extends Controller
 {
@@ -63,9 +63,10 @@ class promotionController extends Controller
         $promotion = Promotion::findOrNew($id);
 
         // fill input
-        $s_at = Carbon::createFromFormat('d-m-Y H:i', Input::get('start_at'));
-        $e_at = Carbon::createFromFormat('d-m-Y H:i', Input::get('end_at'));
+        $s_at = Input::get('start_at') ? Carbon::createFromFormat('d-m-Y H:i', Input::get('start_at')) : null;
+        $e_at = Input::get('end_at') ? Carbon::createFromFormat('d-m-Y H:i', Input::get('end_at')) : null;
 
+        $promotion['user_id'] = Auth::user()['id'];
         $promotion['title'] = Input::get('title');
         $promotion['start_at'] = $s_at;
         $promotion['end_at'] = $e_at;
@@ -104,9 +105,7 @@ class promotionController extends Controller
         $this->page_attributes->filter      =  null;
 
         $this->page_datas->datas            = Promotion::findOrFail($id);
-        if($this->page_datas->datas){
-            $this->page_datas->datas['client'] = json_decode($this->page_datas->datas['client'], true);
-        }
+
         $this->page_datas->id               = $id;
 
         // views

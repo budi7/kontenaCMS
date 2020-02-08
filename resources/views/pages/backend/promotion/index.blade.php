@@ -31,8 +31,9 @@
 							<thead class=" text-primary">
 								<tr>
 									<th>No</th>
-									<th>Title</th>
-									<th>Year</th>
+									<th>Promotion</th>
+									<th>Start At</th>
+									<th>End At</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -45,14 +46,19 @@
 										<td class="text-capitalize">
 											<div class="row">
 												<div class="col-2">
-													<img src="{{ $data['cover'] }}" class="img-fluid"></img>
+													<img src="{{ $data['cover_image'] }}" class="img-fluid"></img>
 												</div>
 												<div class="col-8">
 													{{ $data['title'] }}
 												</div>
 											</div>
 										</td>
-										<td style="vertical-align: baseline;" class="text-capitalize">{{ $data['year'] }}</td>
+                                        <td style="vertical-align: baseline;" class="text-capitalize">
+                                            {{ Carbon\Carbon::parse($data['start_at'])->format('d-m-Y H:i') }}
+                                        </td>
+                                        <td style="vertical-align: baseline;" class="text-capitalize">
+                                            {{ Carbon\Carbon::parse($data['end_at'])->format('d-m-Y H:i') }}
+                                        </td>
 									</tr>
 									@php
 										$ctr++;
